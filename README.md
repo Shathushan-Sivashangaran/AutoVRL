@@ -29,7 +29,7 @@ New application specific scenarios, such as indoor household or office, and subt
 
 1. Install AutoVRL dependencies: [PyBullet](https://github.com/bulletphysics/bullet3), [Gym](https://github.com/openai/gym) and [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3).
 
-2. Clone the contents of [AutoVRL].
+2. Clone the contents of [AutoVRL](https://github.com/Shathushan-Sivashangaran/AutoVRL).
 
 3. Execute simulations using the included SB3 Python script. Environment versions v1, v2, v3, v4 and v5 correspond to the 20m x 20m outdoor, 50m x 50m outdoor, 20m x 20m urban, 50m x 50m urban and oval racetrack environments.
 
