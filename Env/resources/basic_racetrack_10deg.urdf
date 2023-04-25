@@ -1,0 +1,2097 @@
+<?xml version="1.0"?> 
+
+<!-- Copyright 2023 Shathushan Sivashangaran -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); -->
+<!-- you may not use this file except in compliance with the License. -->
+<!-- You may obtain a copy of the License at -->
+
+<!--     http://www.apache.org/licenses/LICENSE-2.0 -->
+
+<!-- Unless required by applicable law or agreed to in writing, software -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS, -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
+<!-- See the License for the specific language governing permissions and -->
+<!-- limitations under the License. -->
+
+<!-- Authors: Shathushan Sivashangaran, Apoorva Khairnar -->
+
+<robot name="basic_racetrack">
+    <link name="left_in">
+        <visual>
+            <origin xyz="-2.95 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-2.95 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <link name="left_out">
+        <visual>
+            <origin xyz="0 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="left" type="fixed">
+        <origin rpy="0 0 0" xyz="-5.05 0 0"/>
+        <parent link="left_in"/>
+        <child link="left_out"/>
+    </joint>
+
+    <link name="right_in">
+        <visual>
+            <origin xyz="0 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="left_to_right" type="fixed">
+        <origin rpy="0 0 0" xyz="2.95 0 0"/>
+        <parent link="left_in"/>
+        <child link="right_in"/>
+    </joint>
+
+    <link name="right_out">
+        <visual>
+            <origin xyz="0 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.375" rpy="0 0 0" />
+            <geometry>
+                <box size='0.1 14 0.75'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="right" type="fixed">
+        <origin rpy="0 0 0" xyz="2.1 0 0"/>
+        <parent link="right_in"/>
+        <child link="right_out"/>
+    </joint>
+
+    <!-- FRONT LEFT INNER CURVE START -->
+
+    <link name="curve_in_fl_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left1" type="fixed">
+        <origin rpy="0 0 0" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_1"/>
+    </joint>
+
+    <link name="curve_in_fl_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left2" type="fixed">
+        <origin rpy="0 0 -0.17456" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_2"/>
+    </joint>
+
+    <link name="curve_in_fl_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left3" type="fixed">
+        <origin rpy="0 0 -0.34912" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_3"/>
+    </joint>
+
+    <link name="curve_in_fl_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left4" type="fixed">
+        <origin rpy="0 0 -0.52368" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_4"/>
+    </joint>
+
+    <link name="curve_in_fl_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left5" type="fixed">
+        <origin rpy="0 0 -0.69824" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_5"/>
+    </joint>
+
+    <link name="curve_in_fl_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left6" type="fixed">
+        <origin rpy="0 0 -0.8728" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_6"/>
+    </joint>
+
+    <link name="curve_in_fl_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left7" type="fixed">
+        <origin rpy="0 0 -1.04736" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_7"/>
+    </joint>
+
+    <link name="curve_in_fl_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left8" type="fixed">
+        <origin rpy="0 0 -1.22192" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_8"/>
+    </joint>
+
+    <link name="curve_in_fl_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_left9" type="fixed">
+        <origin rpy="0 0 -1.39648" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fl_9"/>
+    </joint>
+
+    <!-- FRONT LEFT INNER CURVE END -->
+
+    <!-- BACK LEFT INNER CURVE START -->
+
+    <link name="curve_in_bl_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left1" type="fixed">
+        <origin rpy="0 0 0.17456" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_1"/>
+    </joint>
+
+    <link name="curve_in_bl_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left2" type="fixed">
+        <origin rpy="0 0 0.34912" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_2"/>
+    </joint>
+
+    <link name="curve_in_bl_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left3" type="fixed">
+        <origin rpy="0 0 0.52368" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_3"/>
+    </joint>
+
+    <link name="curve_in_bl_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left4" type="fixed">
+        <origin rpy="0 0 0.69824" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_4"/>
+    </joint>
+
+    <link name="curve_in_bl_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left5" type="fixed">
+        <origin rpy="0 0 0.8728" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_5"/>
+    </joint>
+
+    <link name="curve_in_bl_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left6" type="fixed">
+        <origin rpy="0 0 1.04736" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_6"/>
+    </joint>
+
+    <link name="curve_in_bl_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left7" type="fixed">
+        <origin rpy="0 0 1.22192" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_7"/>
+    </joint>
+
+    <link name="curve_in_bl_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left8" type="fixed">
+        <origin rpy="0 0 1.39648" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_8"/>
+    </joint>
+
+    <link name="curve_in_bl_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_left9" type="fixed">
+        <origin rpy="0 0 1.57104" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_bl_9"/>
+    </joint>
+
+    <!-- BACK LEFT INNER CURVE END   -->
+
+    <!-- FRONT RIGHT INNER CURVE START -->
+
+    <link name="curve_in_fr_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right1" type="fixed">
+        <origin rpy="0 0 -1.57104" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_1"/>
+    </joint>
+
+    <link name="curve_in_fr_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right2" type="fixed">
+        <origin rpy="0 0 -1.7456" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_2"/>
+    </joint>
+
+    <link name="curve_in_fr_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right3" type="fixed">
+        <origin rpy="0 0 -1.92016" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_3"/>
+    </joint>
+
+    <link name="curve_in_fr_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right4" type="fixed">
+        <origin rpy="0 0 -2.09472" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_4"/>
+    </joint>
+
+    <link name="curve_in_fr_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right5" type="fixed">
+        <origin rpy="0 0 -2.26928" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_5"/>
+    </joint>
+
+    <link name="curve_in_fr_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right6" type="fixed">
+        <origin rpy="0 0 -2.44384" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_6"/>
+    </joint>
+
+    <link name="curve_in_fr_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right7" type="fixed">
+        <origin rpy="0 0 -2.6184" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_7"/>
+    </joint>
+
+    <link name="curve_in_fr_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right8" type="fixed">
+        <origin rpy="0 0 -2.79296" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_8"/>
+    </joint>
+
+    <link name="curve_in_fr_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_front_right9" type="fixed">
+        <origin rpy="0 0 -2.96752" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_fr_9"/>
+    </joint>
+
+    <!-- FRONT RIGHT INNER CURVE END -->
+
+    <!-- BACK RIGHT INNER CURVE START -->
+
+    <link name="curve_in_br_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right1" type="fixed">
+        <origin rpy="0 0 1.7456" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_1"/>
+    </joint>
+
+    <link name="curve_in_br_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right2" type="fixed">
+        <origin rpy="0 0 1.92016" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_2"/>
+    </joint>
+
+    <link name="curve_in_br_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right3" type="fixed">
+        <origin rpy="0 0 2.09472" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_3"/>
+    </joint>
+
+    <link name="curve_in_br_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right4" type="fixed">
+        <origin rpy="0 0 2.26928" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_4"/>
+    </joint>
+
+    <link name="curve_in_br_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right5" type="fixed">
+        <origin rpy="0 0 2.44384" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_5"/>
+    </joint>
+
+    <link name="curve_in_br_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right6" type="fixed">
+        <origin rpy="0 0 2.6184" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_6"/>
+    </joint>
+
+    <link name="curve_in_br_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right7" type="fixed">
+        <origin rpy="0 0 2.79296" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_7"/>
+    </joint>
+
+    <link name="curve_in_br_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right8" type="fixed">
+        <origin rpy="0 0 2.96752" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_8"/>
+    </joint>
+
+    <link name="curve_in_br_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_in_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_in_back_right9" type="fixed">
+        <origin rpy="0 0 3.14208" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_in_br_9"/>
+    </joint>
+
+    <!-- BACK RIGHT INNER CURVE END -->
+
+    <!-- FRONT LEFT INNER CURVE START -->
+    
+    <link name="curve_out_fl_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left1" type="fixed">
+        <origin rpy="0 0 0" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_1"/>
+    </joint>
+
+    <link name="curve_out_fl_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left2" type="fixed">
+        <origin rpy="0 0 -0.17456" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_2"/>
+    </joint>
+
+    <link name="curve_out_fl_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left3" type="fixed">
+        <origin rpy="0 0 -0.34912" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_3"/>
+    </joint>
+
+    <link name="curve_out_fl_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left4" type="fixed">
+        <origin rpy="0 0 -0.52368" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_4"/>
+    </joint>
+
+    <link name="curve_out_fl_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left5" type="fixed">
+        <origin rpy="0 0 -0.69824" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_5"/>
+    </joint>
+
+    <link name="curve_out_fl_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left6" type="fixed">
+        <origin rpy="0 0 -0.8728" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_6"/>
+    </joint>
+
+    <link name="curve_out_fl_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left7" type="fixed">
+        <origin rpy="0 0 -1.04736" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_7"/>
+    </joint>
+
+    <link name="curve_out_fl_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left8" type="fixed">
+        <origin rpy="0 0 -1.22192" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_8"/>
+    </joint> 
+
+    <link name="curve_out_fl_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_left9" type="fixed">
+        <origin rpy="0 0 -1.39648" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fl_9"/>
+    </joint>
+
+    <!-- FRONT LEFT OUTER CURVE END -->
+
+    <!-- BACK LEFT OUTER CURVE START -->
+
+    <link name="curve_out_bl_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left1" type="fixed">
+        <origin rpy="0 0 0.17456" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_1"/>
+    </joint>
+
+    <link name="curve_out_bl_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left2" type="fixed">
+        <origin rpy="0 0 0.34912" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_2"/>
+    </joint>
+
+    <link name="curve_out_bl_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left3" type="fixed">
+        <origin rpy="0 0 0.52368" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_3"/>
+    </joint>
+
+    <link name="curve_out_bl_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left4" type="fixed">
+        <origin rpy="0 0 0.69824" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_4"/>
+    </joint>
+
+    <link name="curve_out_bl_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left5" type="fixed">
+        <origin rpy="0 0 0.8728" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_5"/>
+    </joint>
+
+    <link name="curve_out_bl_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left6" type="fixed">
+        <origin rpy="0 0 1.04736" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_6"/>
+    </joint>
+
+    <link name="curve_out_bl_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left7" type="fixed">
+        <origin rpy="0 0 1.22192" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_7"/>
+    </joint>
+
+    <link name="curve_out_bl_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left8" type="fixed">
+        <origin rpy="0 0 1.39648" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_8"/>
+    </joint>
+    
+    <link name="curve_out_bl_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_left9" type="fixed">
+        <origin rpy="0 0 1.57104" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_bl_9"/>
+    </joint>
+
+    <!-- BACK LEFT OUTER CURVE END -->
+
+    <!-- FRONT RIGHT OUTER CURVE START -->
+
+    <link name="curve_out_fr_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right1" type="fixed">
+        <origin rpy="0 0 -1.57104" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_1"/>
+    </joint>
+
+    <link name="curve_out_fr_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right2" type="fixed">
+        <origin rpy="0 0 -1.7456" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_2"/>
+    </joint>
+
+    <link name="curve_out_fr_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right3" type="fixed">
+        <origin rpy="0 0 -1.92016" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_3"/>
+    </joint>
+
+    <link name="curve_out_fr_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right4" type="fixed">
+        <origin rpy="0 0 -2.09472" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_4"/>
+    </joint>
+
+    <link name="curve_out_fr_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right5" type="fixed">
+        <origin rpy="0 0 -2.26928" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_5"/>
+    </joint>
+
+    <link name="curve_out_fr_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right6" type="fixed">
+        <origin rpy="0 0 -2.44384" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_6"/>
+    </joint>
+
+    <link name="curve_out_fr_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right7" type="fixed">
+        <origin rpy="0 0 -2.6184" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_7"/>
+    </joint>
+
+    <link name="curve_out_fr_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right8" type="fixed">
+        <origin rpy="0 0 -2.79296" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_8"/>
+    </joint>
+
+    <link name="curve_out_fr_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_front_right9" type="fixed">
+        <origin rpy="0 0 -2.96752" xyz="0 7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_fr_9"/>
+    </joint>
+
+    <!-- FRONT RIGHT OUTER CURVE END -->
+
+    <!-- BACK RIGHT OUTER CURVE START -->
+
+    <link name="curve_out_br_1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right1" type="fixed">
+        <origin rpy="0 0 1.7456" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_1"/>
+    </joint>
+
+    <link name="curve_out_br_2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right2" type="fixed">
+        <origin rpy="0 0 1.92016" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_2"/>
+    </joint>
+
+    <link name="curve_out_br_3">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right3" type="fixed">
+        <origin rpy="0 0 2.09472" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_3"/>
+    </joint>
+
+    <link name="curve_out_br_4">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right4" type="fixed">
+        <origin rpy="0 0 2.26928" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_4"/>
+    </joint>
+
+    <link name="curve_out_br_5">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right5" type="fixed">
+        <origin rpy="0 0 2.44384" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_5"/>
+    </joint>
+
+    <link name="curve_out_br_6">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right6" type="fixed">
+        <origin rpy="0 0 2.6184" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_6"/>
+    </joint>
+
+    <link name="curve_out_br_7">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right7" type="fixed">
+        <origin rpy="0 0 2.79296" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_7"/>
+    </joint>
+
+    <link name="curve_out_br_8">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right8" type="fixed">
+        <origin rpy="0 0 2.96752" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_8"/>
+    </joint>
+
+    <link name="curve_out_br_9">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0.1 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/basic_racetrack_out_curve.stl'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>    
+    <joint name="curve_out_back_right9" type="fixed">
+        <origin rpy="0 0 3.14208" xyz="0 -7 0"/>
+        <parent link="left_in"/>
+        <child link="curve_out_br_9"/>
+    </joint>
+
+    <!-- BACK RIGHT OUTER CURVE END -->
+</robot>

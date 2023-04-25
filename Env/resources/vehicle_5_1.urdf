@@ -1,0 +1,145 @@
+<?xml version="1.0"?> 
+
+<!-- Copyright 2023 Shathushan Sivashangaran -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); -->
+<!-- you may not use this file except in compliance with the License. -->
+<!-- You may obtain a copy of the License at -->
+
+<!--     http://www.apache.org/licenses/LICENSE-2.0 -->
+
+<!-- Unless required by applicable law or agreed to in writing, software -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS, -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
+<!-- See the License for the specific language governing permissions and -->
+<!-- limitations under the License. -->
+
+<!-- Authors: Shathushan Sivashangaran, Apoorva Khairnar -->
+
+<robot name="vehicle_1">
+    <link name="vehicle_1">
+        <visual>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1body.stl' />
+            </geometry>
+            <material name="cream">
+                <color rgba="0.7 0.8 0.6 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1body.stl' />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <link name="wheels">
+        <visual>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1wheel.stl' />
+            </geometry>
+            <material name="black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1wheel.stl' />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="wheel" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="vehicle_1"/>
+        <child link="wheels"/>
+    </joint>
+    <link name="windows">
+        <visual>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1windows.stl' />
+            </geometry>
+            <material name="windowblack">
+                <color rgba="0.3 0.3 0.3 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1windows.stl' />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="window" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="vehicle_1"/>
+        <child link="windows"/>
+    </joint>
+    <link name="headlights">
+        <visual>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1headlights.stl' />
+            </geometry>
+            <material name="yellow">
+                <color rgba="0.9 1 0.5 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1headlights.stl' />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="headlight" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="vehicle_1"/>
+        <child link="headlights"/>
+    </joint>
+    <link name="rearlights">
+        <visual>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1rearlights.stl' />
+            </geometry>
+            <material name="red">
+                <color rgba="0.8 0 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -2.125" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/vehicle_1rearlights.stl' />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="rearlight" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="vehicle_1"/>
+        <child link="rearlights"/>
+    </joint>
+</robot>

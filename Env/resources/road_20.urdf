@@ -1,0 +1,106 @@
+<?xml version="1.0"?> 
+
+<!-- Copyright 2023 Shathushan Sivashangaran -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); -->
+<!-- you may not use this file except in compliance with the License. -->
+<!-- You may obtain a copy of the License at -->
+
+<!--     http://www.apache.org/licenses/LICENSE-2.0 -->
+
+<!-- Unless required by applicable law or agreed to in writing, software -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS, -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
+<!-- See the License for the specific language governing permissions and -->
+<!-- limitations under the License. -->
+
+<!-- Authors: Shathushan Sivashangaran, Apoorva Khairnar -->
+
+<robot name="road">
+    <!-- Colors --> 
+    <material name="grey"> 
+        <color rgba="0.65 0.65 0.65 1"/>
+    </material>
+
+    <!-- Plane -->
+    <link name="ground">
+        <visual> 
+            <geometry> 
+                <mesh filename='meshes/ground_urban.stl' scale='0.4 0.4 1'/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision> 
+             <geometry> 
+                <mesh filename='meshes/ground_urban.stl' scale='0.4 0.4 1'/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+        </collision> 
+        <inertial> 
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial> 
+        <contact> 
+            <lateral_friction value="4"/>
+        </contact>
+    </link>
+    <link name="road">
+        <visual> 
+            <geometry> 
+                <mesh filename='meshes/road.stl' scale='0.4 0.4 1'/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+            <material name="black">
+                <color rgba='0.4 0.4 0.4 1'/>
+            </material>
+        </visual>
+        <collision> 
+             <geometry> 
+                <mesh filename='meshes/road.stl' scale='0.4 0.4 1'/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+        </collision> 
+        <inertial> 
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial> 
+        <contact> 
+            <lateral_friction value="4"/>
+        </contact>
+    </link>
+    <joint name="road_ground" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="ground"/>
+        <child link="road"/>
+    </joint>
+    <link name="lines">
+        <visual> 
+            <geometry> 
+                <mesh filename='meshes/road_lines.stl' scale='0.4 0.4 1'/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+            <material name="yellow">
+                <color rgba='0.9 1 0 1'/>
+            </material>
+        </visual>
+        <collision> 
+             <geometry> 
+                <mesh filename='meshes/road_lines.stl' scale='0.4 0.4 1'/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+        </collision> 
+        <inertial> 
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial> 
+        <contact> 
+            <lateral_friction value="4"/>
+        </contact>
+    </link>
+    <joint name="road_lines" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0.00015"/>
+        <parent link="ground"/>
+        <child link="lines"/>
+    </joint>
+</robot>

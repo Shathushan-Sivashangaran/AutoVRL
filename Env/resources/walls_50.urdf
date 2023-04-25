@@ -1,0 +1,121 @@
+<?xml version="1.0"?> 
+
+<!-- Copyright 2023 Shathushan Sivashangaran -->
+
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); -->
+<!-- you may not use this file except in compliance with the License. -->
+<!-- You may obtain a copy of the License at -->
+
+<!--     http://www.apache.org/licenses/LICENSE-2.0 -->
+
+<!-- Unless required by applicable law or agreed to in writing, software -->
+<!-- distributed under the License is distributed on an "AS IS" BASIS, -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. -->
+<!-- See the License for the specific language governing permissions and -->
+<!-- limitations under the License. -->
+
+<!-- Authors: Shathushan Sivashangaran, Apoorva Khairnar -->
+
+<robot name="walls">
+    <link name="north">
+        <visual>
+            <origin xyz="0 25.25 0" rpy="0 0 1.571"/>
+            <geometry>
+                <mesh filename='meshes/v0_NS_wall.stl' scale='1 2.428571429 1'/>
+            </geometry>
+            <material name="brown">
+                <color rgba="0.6 0.4 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 25.25 0" rpy="0 0 1.571" />
+            <geometry>
+                <mesh filename='meshes/v0_NS_wall.stl' scale='1 2.428571429 1'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <link name="east">
+        <visual>
+            <origin xyz="0 -25.25 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/v0_EW_wall.stl' scale='1 2.5 1'/>
+            </geometry>
+            <material name="brown">
+                <color rgba="0.6 0.4 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 -25.25 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/v0_EW_wall.stl' scale='1 2.5 1'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="8"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="joint1" type="fixed">
+        <parent link="north"/>
+        <child link="east"/>
+        <origin xyz="25.25 25.25 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="south">
+        <visual>
+            <origin xyz="-25.25 -25.25 0" rpy="0 0 1.571" />
+            <geometry>
+                <mesh filename='meshes/v0_NS_wall.stl' scale='1 2.428571429 1'/>
+            </geometry>
+            <material name="brown">
+                <color rgba="0.6 0.4 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-25.25 -25.25 0" rpy="0 0 1.571" />
+            <geometry>
+                <mesh filename='meshes/v0_NS_wall.stl' scale='1 2.428571429 1'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+
+    <joint name="joint2" type="fixed">
+        <parent link="east"/>
+        <child link="south"/>
+        <origin xyz="0 -25.25 0" rpy="0 0 0" />
+    </joint>
+    <link name="west">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/v0_EW_wall.stl' scale='1 2.5 1'/>
+            </geometry>
+            <material name="brown">
+                <color rgba="0.6 0.4 0.0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename='meshes/v0_EW_wall.stl' scale='1 2.5 1'/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="8"/>
+            <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2" />
+        </inertial>
+    </link>
+    <joint name="joint4" type="fixed">
+        <parent link="north"/>
+        <child link="west"/>
+        <origin xyz="-25.25 0 0" rpy="0 0 0" />
+    </joint>
+</robot>
