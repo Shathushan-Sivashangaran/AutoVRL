@@ -38,4 +38,4 @@ New application specific scenarios, such as indoor household or office, and subt
 
 For more information on AutoVRL refer to the following paper. Cite it if AutoVRL was helpful to your research.
 
-[1] S. Sivashangaran, A. Khairnar and A. Eskandarian, *“AutoVRL: A High Fidelity Autonomous Ground Vehicle Simulator for Sim-to-Real Deep Reinforcement Learning,”* arXiv preprint arXiv:2304.11496, 2023. [Paper Link](https://arxiv.org/pdf/2304.11496.pdf)
+[1] S. Sivashangaran, A. Khairnar and A. Eskandarian, *“AutoVRL: A High Fidelity Autonomous Ground Vehicle Simulator for Sim-to-Real Deep Reinforcement Learning,”* arXiv preprint arXiv:2304.11496, 2023. [Link](https://arxiv.org/pdf/2304.11496.pdf)
