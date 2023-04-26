@@ -29,13 +29,13 @@ New application specific scenarios, such as indoor household or office, and subt
 
 1. Install AutoVRL dependencies: [PyBullet](https://github.com/bulletphysics/bullet3), [Gym](https://github.com/openai/gym) and [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3).
 
-2. Clone the contents of [AutoVRL](https://github.com/Shathushan-Sivashangaran/AutoVRL).
+2. Clone the contents of [AutoVRL](https://github.com/Shathushan-Sivashangaran/AutoVRL) to a new directory `AutoVRL`.
 
-3. Execute simulations using the included SB3 Python script. Environment versions v1, v2, v3, v4 and v5 correspond to the 20m x 20m outdoor, 50m x 50m outdoor, 20m x 20m urban, 50m x 50m urban and oval racetrack environments.
+3. Execute simulations using the `AutoVRL_Train.py` script. Environment versions v1, v2, v3, v4 and v5 correspond to the 20m x 20m outdoor, 50m x 50m outdoor, 20m x 20m urban, 50m x 50m urban and oval racetrack environments.
 
 
 ## Cite
 
 For more information on AutoVRL refer to the following paper. Cite it if AutoVRL was helpful to your research.
 
-[1] S. Sivashangaran, A. Khairnar and A. Eskandarian, *“AutoVRL: A High Fidelity Autonomous Ground Vehicle Simulator for Sim-to-Real Deep Reinforcement Learning,”* arXiv preprint arXiv:2304.11496, 2023. ([Link](https://arxiv.org/pdf/2304.11496.pdf))
+[1] S. Sivashangaran, A. Khairnar and A. Eskandarian, *“AutoVRL: A High Fidelity Autonomous Ground Vehicle Simulator for Sim-to-Real Deep Reinforcement Learning,”* arXiv preprint arXiv:2304.11496, 2023. [Link](https://arxiv.org/pdf/2304.11496.pdf)
